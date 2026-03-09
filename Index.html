@@ -834,6 +834,23 @@
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; padding: 2rem; }
   }
+
+  /* ——— BLOG ——— */
+  #blog { background: var(--offwhite); padding: 7rem 4rem; }
+  .blog-inner { max-width: 1400px; margin: 0 auto; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .blog-card { display: block; text-decoration: none; background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .blog-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(45, 27, 78, 0.1); }
+  .blog-img { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--violet-mist) 0%, rgba(155, 126, 200, 0.2) 100%); background-size: cover; background-position: center; }
+  .blog-info { padding: 1.8rem; }
+  .blog-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet-soft); margin-bottom: 0.6rem; }
+  .blog-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--violet-deep); line-height: 1.3; margin-bottom: 0.75rem; }
+  .blog-excerpt { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .blog-link { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--violet-mid); text-transform: uppercase; }
+  .blog-cta-wrap { margin-top: 3rem; text-align: center; }
+  .blog-empty { text-align: center; padding: 4rem; color: var(--ink-light); font-size: 0.95rem; font-weight: 300; }
+  @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } #blog { padding: 5rem 2rem; } }
 </style>
 </head>
 <body>
@@ -846,6 +863,7 @@
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#videos">Videos</a></li>
     <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#blog">Publicaciones</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -1062,6 +1080,26 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
   </div>
 </section>
 
+<!-- BLOG -->
+<section id="blog">
+  <div class="blog-inner">
+    <div class="reveal">
+      <span class="section-label">Publicaciones</span>
+      <h2 class="section-title serif">Escrituras desde<br><em>el proceso</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>
+    </div>
+    <div class="blog-cta-wrap reveal">
+      <a href="https://seresalmicos.netlify.app/admin" target="_blank" class="btn-outline">
+        Ver todas las publicaciones
+        <span style="font-size:0.9rem; opacity:0.6;">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="contacto-inner">
@@ -1167,7 +1205,49 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
   }
 </script>
 
-</body>
-</html>
+<script>
+  // Cargar posts del blog desde GitHub
+  const GITHUB_USER = 'luigibosca-rgb';
+  const GITHUB_REPO = 'seres-almicos';
+  const POSTS_PATH = '_posts';
+
+  async function cargarBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${POSTS_PATH}`);
+      if (!res.ok) throw new Error();
+      const files = await res.json();
+      const posts = files.filter(f => f.name.endsWith('.md')).slice(0, 6);
+      if (posts.length === 0) {
+        grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
+        return;
+      }
+      const htmlCards = await Promise.all(posts.map(async (file) => {
+        const r = await fetch(file.download_url);
+        const text = await r.text();
+        const title = (text.match(/title:\s*"?(.+?)"?\n/) || [])[1] || 'Sin título';
+        const tag = (text.match(/tag:\s*"?(.+?)"?\n/) || [])[1] || '';
+        const excerpt = (text.match(/excerpt:\s*"?(.+?)"?\n/) || [])[1] || '';
+        const image = (text.match(/image:\s*"?(.+?)"?\n/) || [])[1] || '';
+        return `
+          <div class="blog-card reveal">
+            <div class="blog-img" ${image ? `style="background-image:url('${image}')"` : ''}></div>
+            <div class="blog-info">
+              <div class="blog-tag">${tag}</div>
+              <h3 class="blog-title serif">${title}</h3>
+              <p class="blog-excerpt">${excerpt}</p>
+              <span class="blog-link">Leer más →</span>
+            </div>
+          </div>`;
+      }));
+      grid.innerHTML = htmlCards.join('');
+      document.querySelectorAll('.blog-card').forEach(el => observer.observe(el));
+    } catch {
+      grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
+    }
+  }
+  cargarBlog();
+</script>
+
 </body>
 </html>
