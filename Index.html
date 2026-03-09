@@ -851,6 +851,49 @@
   .blog-empty { text-align: center; padding: 4rem; color: var(--ink-light); font-size: 0.95rem; font-weight: 300; }
   @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } #blog { padding: 5rem 2rem; } }
+
+  /* ——— MODAL BLOG ——— */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(26, 16, 37, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 2rem;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: var(--white);
+    max-width: 760px; width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-hero-img {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--violet-mist) 0%, rgba(155,126,200,0.2) 100%);
+    background-size: cover; background-position: center;
+  }
+  .modal-body { padding: 3rem; }
+  .modal-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet-soft); margin-bottom: 0.75rem; display: block; }
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--violet-deep); line-height: 1.2; margin-bottom: 1.5rem; }
+  .modal-content { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--ink-light); }
+  .modal-content p { margin-bottom: 1.2rem; }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    width: 36px; height: 36px;
+    background: var(--violet-deep);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-size: 1.2rem;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--violet-mid); }
+  @media (max-width: 768px) { .modal-body { padding: 2rem 1.5rem; } .modal-title { font-size: 1.7rem; } }
 </style>
 </head>
 <body>
@@ -1156,6 +1199,19 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
   </div>
 </section>
 
+<!-- MODAL BLOG -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-hero-img" id="modal-img"></div>
+    <div class="modal-body">
+      <span class="modal-tag" id="modal-tag"></span>
+      <h2 class="modal-title serif" id="modal-title"></h2>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Seres Álmicos</div>
@@ -1211,6 +1267,8 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
   const GITHUB_REPO = 'seres-almicos';
   const POSTS_PATH = '_posts';
 
+  let postsData = [];
+
   async function cargarBlog() {
     const grid = document.getElementById('blog-grid');
     try {
@@ -1222,30 +1280,81 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
         grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
         return;
       }
-      const htmlCards = await Promise.all(posts.map(async (file) => {
+      postsData = await Promise.all(posts.map(async (file) => {
         const r = await fetch(file.download_url);
         const text = await r.text();
-        const title = (text.match(/title:\s*"?(.+?)"?\n/) || [])[1] || 'Sin título';
-        const tag = (text.match(/tag:\s*"?(.+?)"?\n/) || [])[1] || '';
-        const excerpt = (text.match(/excerpt:\s*"?(.+?)"?\n/) || [])[1] || '';
-        const image = (text.match(/image:\s*"?(.+?)"?\n/) || [])[1] || '';
-        return `
-          <div class="blog-card reveal">
-            <div class="blog-img" ${image ? `style="background-image:url('${image}')"` : ''}></div>
-            <div class="blog-info">
-              <div class="blog-tag">${tag}</div>
-              <h3 class="blog-title serif">${title}</h3>
-              <p class="blog-excerpt">${excerpt}</p>
-              <span class="blog-link">Leer más →</span>
-            </div>
-          </div>`;
+        const title = (text.match(/title:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || 'Sin título';
+        const tag = (text.match(/tag:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || '';
+        const image = (text.match(/image:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || '';
+        // Extraer excerpt (puede ser multilínea con indentación)
+        const excerptMatch = text.match(/excerpt:\s*["']?([\s\S]*?)["']?\n---/);
+        const excerpt = excerptMatch ? excerptMatch[1].replace(/\n\s+/g, ' ').replace(/^["']|["']$/g, '').trim() : '';
+        // Extraer cuerpo después del segundo ---
+        const parts = text.split('---');
+        const body = parts.slice(2).join('---').trim();
+        return { title, tag, excerpt, image, body };
       }));
-      grid.innerHTML = htmlCards.join('');
+
+      grid.innerHTML = postsData.map((post, i) => `
+        <div class="blog-card reveal" onclick="abrirModal(${i})" style="cursor:pointer;">
+          <div class="blog-img" ${post.image ? `style="background-image:url('${post.image}')"` : ''}></div>
+          <div class="blog-info">
+            <div class="blog-tag">${post.tag}</div>
+            <h3 class="blog-title serif">${post.title}</h3>
+            <p class="blog-excerpt">${post.excerpt.substring(0, 120)}...</p>
+            <span class="blog-link">Leer más →</span>
+          </div>
+        </div>`).join('');
+
       document.querySelectorAll('.blog-card').forEach(el => observer.observe(el));
-    } catch {
+    } catch(e) {
       grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
     }
   }
+
+  function abrirModal(i) {
+    const post = postsData[i];
+    document.getElementById('modal-tag').textContent = post.tag;
+    document.getElementById('modal-title').textContent = post.title;
+    const imgEl = document.getElementById('modal-img');
+    imgEl.style.backgroundImage = post.image ? `url('${post.image}')` : '';
+
+    // Convertir markdown a HTML
+    let html = post.body
+      // Links tipo <https://...>
+      .replace(/<(https?:\/\/[^>]+)>/g, '<a href="$1" target="_blank" style="color:var(--violet-mid);word-break:break-all;">$1</a>')
+      // Links tipo [texto](url)
+      .replace(/\[(.+?)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color:var(--violet-mid);">$1</a>')
+      // Títulos
+      .replace(/^## (.+)$/gm, '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.5rem;font-weight:300;color:#2D1B4E;margin:1.5rem 0 0.75rem;">$1</h3>')
+      .replace(/^# (.+)$/gm, '<h2 style="font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:300;color:#2D1B4E;margin:1.5rem 0 0.75rem;">$1</h2>')
+      // Negrita y cursiva
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Párrafos
+      .split('\n\n').map(p => p.trim() ? `<p>${p.replace(/\n/g, '<br>')}</p>` : '').join('');
+
+    // Si el cuerpo está vacío mostrar el excerpt completo
+    if (!html.trim()) {
+      html = `<p>${post.excerpt}</p>`;
+    }
+
+    document.getElementById('modal-content').innerHTML = html;
+    document.getElementById('modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarModal() {
+    document.getElementById('modal-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', cerrarModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) cerrarModal();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarModal(); });
+
   cargarBlog();
 </script>
 
