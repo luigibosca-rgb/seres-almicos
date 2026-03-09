@@ -1339,7 +1339,8 @@ De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrati
       html = `<p>${post.excerpt}</p>`;
     }
 
-    document.getElementById('modal-content').innerHTML = html;
+    const excerptHtml = post.excerpt ? `<p style="font-size:1.05rem;font-style:italic;color:var(--violet-soft);border-left:2px solid var(--violet-pale);padding-left:1rem;margin-bottom:1.5rem;">${post.excerpt}</p>` : '';
+document.getElementById('modal-content').innerHTML = excerptHtml + html;
     document.getElementById('modal-overlay').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
