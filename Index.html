@@ -78,6 +78,52 @@
 
   .nav-links a:hover { color: var(--violet-mid); }
 
+  /* ——— HAMBURGER MENU ——— */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--violet-deep);
+    transition: all 0.3s;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(253, 252, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(155, 126, 200, 0.15);
+    padding: 1.5rem 2rem;
+    z-index: 99;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-mobile.active { display: flex; }
+  .nav-mobile a {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(155, 126, 200, 0.1);
+    transition: color 0.2s;
+  }
+  .nav-mobile a:last-child { border-bottom: none; }
+  .nav-mobile a:hover { color: var(--violet-mid); }
+
   /* ——— HERO ——— */
   #hero {
     min-height: 100vh;
@@ -105,7 +151,7 @@
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 5.5vw, 6rem);
+    font-size: clamp(2.2rem, 8vw, 6rem);
     font-weight: 300;
     line-height: 1.05;
     color: var(--violet-deep);
@@ -834,6 +880,7 @@
   @media (max-width: 768px) {
     nav { padding: 1.2rem 2rem; }
     .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     section { padding: 5rem 2rem; }
     #servicios, #videos, #testimonios, #contacto { padding: 5rem 2rem; }
     .servicios-grid { grid-template-columns: 1fr; }
@@ -841,6 +888,9 @@
     .testimonios-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; padding: 2rem; }
+    .section-title { font-size: clamp(1.8rem, 6vw, 3rem); }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-subtitle { font-size: 0.95rem; }
   }
 
   /* ——— BLOG ——— */
@@ -917,7 +967,22 @@
     <li><a href="#blog">Publicaciones</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#sobre-mi" onclick="cerrarMenuMovil()">Sobre mí</a>
+  <a href="#servicios" onclick="cerrarMenuMovil()">Servicios</a>
+  <a href="#videos" onclick="cerrarMenuMovil()">Videos</a>
+  <a href="#testimonios" onclick="cerrarMenuMovil()">Testimonios</a>
+  <a href="#blog" onclick="cerrarMenuMovil()">Publicaciones</a>
+  <a href="#contacto" onclick="cerrarMenuMovil()">Contacto</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -1367,5 +1432,24 @@ document.getElementById('modal-content').innerHTML = excerptHtml + html;
   cargarBlog();
 </script>
 
+<script>
+  // Menú hamburguesa móvil
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  function cerrarMenuMovil() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+</script>
+
 </body>
 </html>
+
