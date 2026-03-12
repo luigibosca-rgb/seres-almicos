@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="eLtDc-D1YRjE3nwZXXj-Ui7vEBURlaiUsFIjYIj6LD0" />  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seres Álmicos — Procesos de Conciencia</title>
+<meta name="description" content="Seres Álmicos — Facilitadora de procesos de conciencia. Integrando astrología, acompañamiento terapéutico y herramientas simbólicas para tu transformación personal.">
+<meta name="keywords" content="procesos de conciencia, astrología evolutiva, acompañamiento terapéutico, desarrollo personal, espiritualidad, Buenos Aires">
+<meta name="author" content="Cynthia Pawelek">
+<meta property="og:title" content="Seres Álmicos — Procesos de Conciencia">
+<meta property="og:description" content="Facilitadora de procesos de conciencia que integra herramientas espirituales con mirada terapéutica.">
+<meta property="og:url" content="https://seresalmicos.netlify.app">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet-deep: #2D1B4E;
+    --violet-mid: #5B3A8A;
+    --violet-soft: #9B7EC8;
+    --violet-pale: #C4A8E8;
+    --violet-mist: #EDE6F8;
+    --white: #FDFCFF;
+    --offwhite: #F7F3FE;
+    --ink: #1A1025;
+    --ink-light: #4A3B60;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ——— TYPOGRAPHY ——— */
+  .serif { font-family: 'Cormorant Garamond', serif; }
+
+  /* ——— NAV ——— */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(253, 252, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(155, 126, 200, 0.12);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--violet-deep);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--violet-mid); }
+
+  /* ——— HAMBURGER MENU ——— */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--violet-deep);
+    transition: all 0.3s;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(253, 252, 255, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(155, 126, 200, 0.15);
+    padding: 1.5rem 2rem;
+    z-index: 99;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-mobile.active { display: flex; }
+  .nav-mobile a {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(155, 126, 200, 0.1);
+    transition: color 0.2s;
+  }
+  .nav-mobile a:last-child { border-bottom: none; }
+  .nav-mobile a:hover { color: var(--violet-mid); }
+
+  /* ——— HERO ——— */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 4rem 4rem 4rem;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet-soft);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--violet-deep);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--violet-mid);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink-light);
+    max-width: 38ch;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.7s forwards;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--violet-deep);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.9s forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--violet-mid);
+    transform: translateY(-2px);
+  }
+
+  .hero-cta-arrow {
+    width: 18px; height: 1px;
+    background: var(--violet-pale);
+    position: relative;
+    transition: width 0.3s;
+  }
+
+  .hero-cta:hover .hero-cta-arrow { width: 28px; }
+
+  .hero-cta-arrow::after {
+    content: '';
+    position: absolute; right: 0; top: -3px;
+    width: 6px; height: 6px;
+    border-right: 1px solid var(--violet-pale);
+    border-top: 1px solid var(--violet-pale);
+    transform: rotate(45deg);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-visual {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 60% 40%, rgba(91, 58, 138, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 80%, rgba(196, 168, 232, 0.25) 0%, transparent 60%),
+      linear-gradient(160deg, var(--violet-mist) 0%, var(--offwhite) 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    animation: orbReveal 1.8s ease 0.8s forwards;
+  }
+
+  .hero-orb-1 {
+    width: 320px; height: 320px;
+    top: 15%; left: 15%;
+    background: radial-gradient(circle, rgba(155, 126, 200, 0.35) 0%, transparent 70%);
+  }
+
+  .hero-orb-2 {
+    width: 200px; height: 200px;
+    top: 55%; left: 50%;
+    background: radial-gradient(circle, rgba(201, 169, 110, 0.22) 0%, transparent 70%);
+    animation-delay: 1.2s;
+  }
+
+  .hero-orb-3 {
+    width: 140px; height: 140px;
+    top: 10%; left: 60%;
+    background: radial-gradient(circle, rgba(91, 58, 138, 0.2) 0%, transparent 70%);
+    animation-delay: 1.5s;
+  }
+
+  .hero-symbol {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px; height: 260px;
+    opacity: 0;
+    animation: fadeIn 2s ease 1.2s forwards;
+  }
+
+  .hero-symbol svg {
+    width: 100%; height: 100%;
+  }
+
+  /* ——— SECTIONS COMMON ——— */
+  section {
+    padding: 7rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--violet-soft);
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--violet-deep);
+    margin-bottom: 2rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--violet-mid);
+  }
+
+  .divider {
+    width: 48px; height: 1px;
+    background: linear-gradient(90deg, var(--violet-pale), transparent);
+    margin-bottom: 3rem;
+  }
+
+  /* ——— SOBRE MÍ ——— */
+  #sobre-mi {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 7rem 4rem;
+  }
+
+  .sobre-visual {
+    position: relative;
+  }
+
+  .sobre-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-width: 420px;
+    background: linear-gradient(145deg, var(--violet-mist) 0%, rgba(155, 126, 200, 0.15) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sobre-frame::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(155, 126, 200, 0.3);
+    pointer-events: none;
+  }
+
+  .sobre-frame-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    color: var(--violet-soft);
+  }
+
+  .sobre-frame-placeholder svg {
+    width: 48px; height: 48px;
+    opacity: 0.4;
+  }
+
+  .sobre-frame-placeholder span {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .sobre-accent {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border: 1px solid var(--violet-pale);
+    z-index: -1;
+  }
+
+  .sobre-text p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .sobre-text p strong {
+    font-weight: 500;
+    color: var(--violet-mid);
+  }
+
+  .sobre-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--violet-soft);
+    margin-top: 2rem;
+  }
+
+  /* ——— SERVICIOS ——— */
+  #servicios {
+    background: var(--violet-deep);
+    padding: 7rem 4rem;
+  }
+
+  #servicios .section-label { color: var(--violet-pale); }
+  #servicios .section-title { color: var(--white); }
+  #servicios .section-title em { color: var(--violet-pale); }
+  #servicios .divider { background: linear-gradient(90deg, rgba(196, 168, 232, 0.5), transparent); }
+
+  .servicios-header {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap; gap: 2rem;
+  }
+
+  .servicios-intro {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(237, 230, 248, 0.7);
+    max-width: 42ch;
+  }
+
+  .servicios-grid {
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(155, 126, 200, 0.15);
+  }
+
+  .servicio-card {
+    background: var(--violet-deep);
+    padding: 3rem 2.5rem;
+    transition: background 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .servicio-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .servicio-card:hover {
+    background: rgba(91, 58, 138, 0.4);
+  }
+
+  .servicio-card:hover::after { width: 100%; }
+
+  .servicio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(155, 126, 200, 0.2);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .servicio-icon {
+    width: 40px; height: 40px;
+    margin-bottom: 1.5rem;
+    color: var(--violet-pale);
+  }
+
+  .servicio-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .servicio-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(237, 230, 248, 0.6);
+  }
+
+  /* ——— VIDEOS ——— */
+  #videos {
+    background: var(--offwhite);
+    padding: 7rem 4rem;
+  }
+
+  .videos-header {
+    max-width: 1400px; margin: 0 auto 4rem;
+  }
+
+  .videos-grid {
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .video-card {
+    background: var(--white);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(45, 27, 78, 0.12);
+  }
+
+  .video-thumb {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--violet-mist) 0%, rgba(155, 126, 200, 0.2) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .video-play {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(45, 27, 78, 0.8);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .video-card:hover .video-play {
+    transform: scale(1.1);
+    background: var(--violet-mid);
+  }
+
+  .video-play svg { width: 20px; height: 20px; color: var(--white); margin-left: 3px; }
+
+  .video-info {
+    padding: 1.5rem;
+  }
+
+  .video-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--violet-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--violet-deep);
+    line-height: 1.35;
+  }
+
+  .videos-cta-wrap {
+    max-width: 1400px; margin: 3rem auto 0;
+    text-align: center;
+  }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    border: 1px solid var(--violet-mid);
+    color: var(--violet-mid);
+    padding: 0.85rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: var(--violet-deep);
+    border-color: var(--violet-deep);
+    color: var(--white);
+  }
+
+  /* ——— TESTIMONIOS ——— */
+  #testimonios {
+    background: var(--white);
+    padding: 7rem 4rem;
+  }
+
+  .testimonios-inner {
+    max-width: 1400px; margin: 0 auto;
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .testimonio {
+    padding: 2.5rem;
+    border: 1px solid var(--violet-mist);
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .testimonio:hover { border-color: var(--violet-pale); }
+
+  .testimonio-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    line-height: 0.8;
+    color: var(--violet-pale);
+    margin-bottom: 1rem;
+  }
+
+  .testimonio-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink-light);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .testimonio-author {
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .author-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet-soft), var(--violet-pale));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--white);
+  }
+
+  .author-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--violet-deep);
+  }
+
+  .author-role {
+    font-size: 0.72rem;
+    color: var(--violet-soft);
+    margin-top: 0.15rem;
+  }
+
+  /* ——— CONTACTO ——— */
+  #contacto {
+    background: var(--violet-deep);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contacto::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: 50%;
+    width: 600px; height: 600px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(155, 126, 200, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contacto-inner {
+    max-width: 700px; margin: 0 auto;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+
+  #contacto .section-label { color: var(--violet-pale); text-align: center; }
+  #contacto .section-title { color: var(--white); }
+  #contacto .section-title em { color: var(--violet-pale); }
+  #contacto .divider { margin: 0 auto 3rem; background: linear-gradient(90deg, transparent, rgba(196, 168, 232, 0.5), transparent); }
+
+  .contacto-text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(237, 230, 248, 0.7);
+    margin-bottom: 3rem;
+  }
+
+  .contacto-form {
+    display: flex; flex-direction: column; gap: 1rem;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+
+  .form-field {
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+
+  .form-field label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--violet-pale);
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(155, 126, 200, 0.25);
+    padding: 0.85rem 1rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: rgba(196, 168, 232, 0.35);
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-color: var(--violet-pale);
+  }
+
+  .form-field select option { background: var(--violet-deep); }
+
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .form-submit:hover {
+    background: rgba(201, 169, 110, 0.12);
+    border-color: var(--gold-light);
+  }
+
+  .newsletter-alt {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(155, 126, 200, 0.2);
+    text-align: center;
+  }
+
+  .newsletter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .newsletter-sub {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(237, 230, 248, 0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .newsletter-inline {
+    display: flex; gap: 0;
+    max-width: 420px; margin: 0 auto;
+  }
+
+  .newsletter-inline input {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(155, 126, 200, 0.25);
+    border-right: none;
+    padding: 0.85rem 1rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    outline: none;
+  }
+
+  .newsletter-inline input::placeholder { color: rgba(196, 168, 232, 0.35); }
+
+  .newsletter-inline button {
+    background: var(--violet-mid);
+    border: 1px solid var(--violet-mid);
+    padding: 0.85rem 1.5rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+
+  .newsletter-inline button:hover { background: var(--violet-soft); }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--ink);
+    padding: 2.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--violet-pale);
+  }
+
+  .footer-text {
+    font-size: 0.72rem;
+    color: rgba(237, 230, 248, 0.35);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-social {
+    display: flex; gap: 1.5rem;
+  }
+
+  .footer-social a {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(196, 168, 232, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--violet-pale); }
+
+  /* ——— ANIMATIONS ——— */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.85; }
+  }
+
+  @keyframes orbReveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ——— RESPONSIVE ——— */
+@media (max-width: 1024px) {
+  #hero { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+  .hero-right { display: block; width: 100%; height: 320px; position: relative; }}
+    #sobre-mi { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+    .servicios-grid { grid-template-columns: 1fr 1fr; }
+    .videos-grid { grid-template-columns: 1fr 1fr; }
+    .testimonios-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    section { padding: 5rem 2rem; }
+    #servicios, #videos, #testimonios, #contacto { padding: 5rem 2rem; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .videos-grid { grid-template-columns: 1fr; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 2rem; }
+    .section-title { font-size: clamp(1.8rem, 6vw, 3rem); }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-subtitle { font-size: 0.95rem; }
+  }
+
+  /* ——— BLOG ——— */
+  #blog { background: var(--offwhite); padding: 7rem 4rem; }
+  .blog-inner { max-width: 1400px; margin: 0 auto; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .blog-card { display: block; text-decoration: none; background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .blog-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(45, 27, 78, 0.1); }
+  .blog-img { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--violet-mist) 0%, rgba(155, 126, 200, 0.2) 100%); background-size: cover; background-position: center; }
+  .blog-info { padding: 1.8rem; }
+  .blog-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet-soft); margin-bottom: 0.6rem; }
+  .blog-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--violet-deep); line-height: 1.3; margin-bottom: 0.75rem; }
+  .blog-excerpt { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--ink-light); margin-bottom: 1.2rem; }
+  .blog-link { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--violet-mid); text-transform: uppercase; }
+  .blog-cta-wrap { margin-top: 3rem; text-align: center; }
+  .blog-empty { text-align: center; padding: 4rem; color: var(--ink-light); font-size: 0.95rem; font-weight: 300; }
+  @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } #blog { padding: 5rem 2rem; } }
+
+  /* ——— MODAL BLOG ——— */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(26, 16, 37, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 2rem;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: var(--white);
+    max-width: 760px; width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-hero-img {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--violet-mist) 0%, rgba(155,126,200,0.2) 100%);
+    background-size: cover; background-position: center;
+  }
+  .modal-body { padding: 3rem; }
+  .modal-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet-soft); margin-bottom: 0.75rem; display: block; }
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--violet-deep); line-height: 1.2; margin-bottom: 1.5rem; }
+  .modal-content { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--ink-light); }
+  .modal-content p { margin-bottom: 1.2rem; }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    width: 36px; height: 36px;
+    background: var(--violet-deep);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-size: 1.2rem;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--violet-mid); }
+  @media (max-width: 768px) { .modal-body { padding: 2rem 1.5rem; } .modal-title { font-size: 1.7rem; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Seres Álmicos</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#blog">Publicaciones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#sobre-mi" onclick="cerrarMenuMovil()">Sobre mí</a>
+  <a href="#servicios" onclick="cerrarMenuMovil()">Servicios</a>
+  <a href="#videos" onclick="cerrarMenuMovil()">Videos</a>
+  <a href="#testimonios" onclick="cerrarMenuMovil()">Testimonios</a>
+  <a href="#blog" onclick="cerrarMenuMovil()">Publicaciones</a>
+  <a href="#contacto" onclick="cerrarMenuMovil()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Procesos de conciencia</span>
+    <h1 class="hero-title serif">
+      Donde <br><em> el símbolo, el sonido y la palabra</em><br>se encuentran
+    </h1>
+    <p class="hero-subtitle">
+      Un espacio para encontrar la congruencia entre tu historia y tu presente, despejando el camino para que logres, finalmente, descubrir la verdadera sonoridad de tu voz.
+    </p>
+    <a href="#servicios" class="hero-cta">
+      Explorar servicios
+      <span class="hero-cta-arrow"></span>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <img src="MainPicture.jpg" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
+  </div>
+
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="sobre-visual reveal">
+    <div class="sobre-frame">
+      <img src="CEP.jpg" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div class="sobre-accent"></div>
+  </div>
+  <div class="sobre-text reveal">
+    <span class="section-label">Sobre mí</span>
+    <h2 class="section-title serif">Despertar<br> <em>la sonoridad de tu voz</em></h2>
+    <div class="divider"></div>
+    <p>
+No creo en las etiquetas ni en diagnósticos que sentencian. Mucho menos en recetas mágicas. Sí, creo en la escucha activa, en la empatía y en la aceptación incondicional. Sí, creo por sobre todo en el poder que cada ser tiene para transformarse cuando encuentra el espacio adecuado.
+<br> Soy Cynthia Pawelek y mi camino ha sido una búsqueda constante por integrar mundos que parecían ajenos: las Relaciones Internacionales, la Escritura Creativa, el poder sagrado del sonido, el lenguaje simbólico de la astrología evolutiva y la humanidad del Counseling.
+En esa integración encontré mi propio lenguaje: una mirada terapéutica que utiliza la memoria emotiva y la consciencia de la meditación como puertas de entrada a lo profundo, para que puedas encontrar las respuestas dentro tuyo. Mi pasión por la energía del cielo, especialmente en la fuerza de la Luna y de Lilith, es la brújula que completa mi abordaje.
+<br> Mi propósito es acompañarte a encontrar la congruencia entre tu historia pasada y tu presente, para que lo que pienses, sientas y digas tenga un solo sentido.
+De esa misma búsqueda de identidad nació mi pulso por la ficción: una narrativa inspirada en voces de mujeres que buscan sus propias respuestas. 
+<br>Es una invitación a que vos también descubras la sonoridad de tu voz.
+    </p>
+
+    <div class="sobre-signature">— Cynthia Pawelek / Seres Álmicos</div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header reveal">
+    <div>
+      <span class="section-label">Servicios</span>
+      <h2 class="section-title serif">Formas de<br><em>acompañamiento</em></h2>
+      <div class="divider"></div>
+    </div>
+    <p class="servicios-intro">
+      Cada propuesta surge de años de trabajo integrado. No son fórmulas: son espacios diseñados para lo que realmente necesitás.
+    </p>
+  </div>
+  <div class="servicios-grid">
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">01</div>
+      <h3 class="servicio-title serif">El Mapa del Cielo</h3>
+      <p class="servicio-desc">Exploramos tu Carta Natal como un territorio de múltiples sentidos. Buscamos entender tu diseño original de forma integral: desde tus planetas hasta la fuerza de tu Luna, tu Lilith y el camino de tus Nodos Lunares.</p>
+    </div>
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">02</div>
+      <h3 class="servicio-title serif">La Humanidad del Vínculo</h3>
+      <p class="servicio-desc">Un espacio de escucha activa y aceptación incondicional. Aquí buscamos la congruencia entre lo que tu mapa dice y lo que tu Ser necesita experimentar aquí y ahora.</p>
+    </div>
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">03</div>
+      <h3 class="servicio-title serif">El Poder Sagrado del Sonido</h3>
+      <p class="servicio-desc">Donde las palabras no llegan, llega la vibración. Utilizamos el sonido para limpiar el ruido externo, conectar con tu frecuencia más honesta y abrir puertas a la memoria emotiva.</p>
+    </div>
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">04</div>
+      <h3 class="servicio-title serif">El Encuentro con lo Profundo</h3>
+      <p class="servicio-desc">A través de la meditación consciente/guiada creamos el silencio necesario para que las respuestas que ya habitan en vos logren salir a la luz.</p>
+    </div>
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">05</div>
+      <h3 class="servicio-title serif">La Narrativa de tu Historia</h3>
+      <p class="servicio-desc">Le damos forma a lo descubierto a través del relato. Integramos tu pasado con tu presente para que seas vos quien narre, con autoridad, la nueva versión de tu propia historia.</p>
+    </div>
+
+    <div class="servicio-card reveal">
+      <div class="servicio-num">06</div>
+      <h3 class="servicio-title serif">La Alquimia del Ser</h3>
+      <p class="servicio-desc">Mi espacio más personal, donde integro todas mis herramientas de forma artesanal. Un encuentro genuino para descubrir tu verdadero Ser Álmico a través de la unión del sonido, el símbolo y la palabra.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="videos-header reveal">
+    <span class="section-label">Canal de YouTube</span>
+    <h2 class="section-title serif">Contenido para<br><em>profundizar</em></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="videos-grid">
+
+    <a href="https://www.youtube.com/watch?v=Zmo43AgaeS8&t=1s" target="_blank" class="video-card reveal">
+      <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/Zmo43AgaeS8/hqdefault.jpg'); background-size: cover; background-position: center;">
+        <div class="video-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Astrología</div>
+        <div class="video-title serif">La Sombra del Eclipse y Luna llena en Virgo <br> Del Caos a la Congruencia Meditación Sensorial</div>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=1CG-DEP54Hk&t=2s" target="_blank" class="video-card reveal">
+        <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/1CG-DEP54Hk/hqdefault.jpg'); background-size: cover; background-position: center;">
+        <div class="video-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Astrología</div>
+        <div class="video-title serif">Luna Nueva en Acuario <br>Meditación sensorial en el Observatorio de Cristal</div>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=VSqrJ4H_48Y&t=6s" target="_blank" class="video-card reveal">
+        <div class="video-thumb" style="background-image: url('https://img.youtube.com/vi/VSqrJ4H_48Y/hqdefault.jpg'); background-size: cover; background-position: center;">    
+        <div class="video-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">VUELTA AL ORIGEN</div>
+        <div class="video-title serif">El fin de los mandatos <br> Meditación Sensorial Saturno-Neptuno </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="videos-cta-wrap reveal">
+    <a href="https://www.youtube.com/@Seresalmicos" target="_blank" class="btn-outline">
+      Ver todos los videos
+      <span style="font-size:0.9rem; opacity:0.6;">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="testimonios-inner">
+    <div class="reveal">
+      <span class="section-label">Ecos de la transformación</span>
+      <h2 class="section-title serif">La Palabra<br> de quienes <em> <br>transitaron el proceso</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonios-grid">
+
+      <div class="testimonio reveal">
+        <div class="testimonio-quote serif">"</div>
+        <p class="testimonio-text">Llegué en un momento de mucha confusión y sin saber muy bien qué buscar. El proceso me ayudó a ver patrones que venía arrastrando hace años, con una claridad que no había encontrado en ningún otro espacio.</p>
+        <div class="testimonio-author">
+          <div class="author-dot">V</div>
+          <div>
+            <div class="author-name">Valentina R.</div>
+            <div class="author-role">La Alquimia del Ser — Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio reveal">
+        <div class="testimonio-quote serif">"</div>
+        <p class="testimonio-text">Conocer mi carta natal fue profundamente terapéutica. No fue sobre predicciones sino sobre comprenderme. Me llevó semanas integrar todo lo que surgió en esa sesión. Muy transformador.</p>
+        <div class="testimonio-author">
+          <div class="author-dot">M</div>
+          <div>
+            <div class="author-name">Marcelo T.</div>
+            <div class="author-role">El Mapa del Cielo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio reveal">
+        <div class="testimonio-quote serif">"</div>
+        <p class="testimonio-text">Lo que más me sorprendió fue la calidad de presencia. No juzga, no apura, no impone. Simplemente acompaña. Y eso, en un proceso vulnerable, lo es todo.</p>
+        <div class="testimonio-author">
+          <div class="author-dot">S</div>
+          <div>
+            <div class="author-name">Sofía C.</div>
+            <div class="author-role">La Humanidad del Vínculo — 5 meses</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="blog-inner">
+    <div class="reveal">
+      <span class="section-label">Publicaciones</span>
+      <h2 class="section-title serif">Escrituras desde<br><em>el proceso</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>
+    </div>
+    <div class="blog-cta-wrap reveal">
+      <a href="https://seresalmicos.netlify.app/admin" target="_blank" class="btn-outline">
+        Ver todas las publicaciones
+        <span style="font-size:0.9rem; opacity:0.6;">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <span class="section-label">Contacto</span>
+    <h2 class="section-title serif">¿Te animás a transformarte<br><em>en un Ser Álmico?</em></h2>
+    <div class="divider"></div>
+    <p class="contacto-text">
+      Completá el formulario y me comunico en las próximas 48 horas. Si tenés dudas sobre qué servicio te conviene, podemos explorar eso juntas en una conversación inicial.
+    </p>
+    <form class="contacto-form" action="https://formspree.io/f/myknknwb" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="tu@email.com">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>¿Qué te interesa?</label>
+        <select name="servicio">
+          <option value="" disabled selected>Seleccioná un servicio</option>
+          <option>Mapa del Cielo</option>
+          <option>La Humanidad del Vínculo</option>
+          <option>El Poder Sagrado del Sonido</option>
+          <option>El Encuentro con lo Profundo</option>
+          <option>La Narrativa de tu Historia</option>
+          <option>La Alquimia del Ser</option>
+          <option>No lo sé aún, necesito orientación</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Mensaje</label>
+        <textarea name="mensaje" placeholder="Contame brevemente qué estás transitando o qué estás buscando..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">
+        Enviar consulta
+        <span style="opacity:0.6;">—</span>
+      </button>
+    </form>
+    <div class="newsletter-alt">
+      <form action="https://hotmail.us9.list-manage.com/subscribe/post?u=071579937b2ae8bbff83701ee&amp;id=24c234b3aa&amp;f_id=003655e1f0" method="post" target="_blank">
+  <div class="newsletter-inline">
+    <input type="email" name="EMAIL" placeholder="tu@email.com" required>
+    <button type="submit">Suscribirme</button>
+  </div>
+  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+    <input type="text" name="b_071579937b2ae8bbff83701ee_24c234b3aa" tabindex="-1" value="">
+  </div>
+</form>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL BLOG -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-hero-img" id="modal-img"></div>
+    <div class="modal-body">
+      <span class="modal-tag" id="modal-tag"></span>
+      <h2 class="modal-title serif" id="modal-title"></h2>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Seres Álmicos</div>
+  <div class="footer-text">© 2025 · Todos los derechos reservados</div>
+  <div class="footer-social">
+    <a href="https://www.youtube.com/@Seresalmicos" target="_blank">YouTube</a>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Subtle hero orb parallax
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    document.querySelectorAll('.hero-orb').forEach((orb, i) => {
+      const factor = (i + 1) * 0.4;
+      orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    });
+  });
+</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
+<script>
+  // Cargar posts del blog desde GitHub
+  const GITHUB_USER = 'luigibosca-rgb';
+  const GITHUB_REPO = 'seres-almicos';
+  const POSTS_PATH = '_posts';
+
+  let postsData = [];
+
+  async function cargarBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${POSTS_PATH}`);
+      if (!res.ok) throw new Error();
+      const files = await res.json();
+      const posts = files.filter(f => f.name.endsWith('.md')).slice(0, 6);
+      if (posts.length === 0) {
+        grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
+        return;
+      }
+      postsData = await Promise.all(posts.map(async (file) => {
+        const r = await fetch(file.download_url);
+        const text = await r.text();
+        const title = (text.match(/title:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || 'Sin título';
+        const tag = (text.match(/tag:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || '';
+        const image = (text.match(/image:\s*(.+)\n/) || [])[1]?.replace(/^["']|["']$/g, '').trim() || '';
+        // Extraer excerpt (puede ser multilínea con indentación)
+        const excerptMatch = text.match(/excerpt:\s*["']?([\s\S]*?)["']?\n---/);
+        const excerpt = excerptMatch ? excerptMatch[1].replace(/\n\s+/g, ' ').replace(/^["']|["']$/g, '').trim() : '';
+        // Extraer cuerpo después del segundo ---
+        const parts = text.split('---');
+        const body = parts.slice(2).join('---').trim();
+        return { title, tag, excerpt, image, body };
+      }));
+
+      grid.innerHTML = postsData.map((post, i) => `
+        <div class="blog-card reveal" onclick="abrirModal(${i})" style="cursor:pointer;">
+          <div class="blog-img" ${post.image ? `style="background-image:url('${post.image}')"` : ''}></div>
+          <div class="blog-info">
+            <div class="blog-tag">${post.tag}</div>
+            <h3 class="blog-title serif">${post.title}</h3>
+            <p class="blog-excerpt">${post.excerpt.substring(0, 120)}...</p>
+            <span class="blog-link">Leer más →</span>
+          </div>
+        </div>`).join('');
+
+      document.querySelectorAll('.blog-card').forEach(el => observer.observe(el));
+    } catch(e) {
+      grid.innerHTML = '<div class="blog-empty">Las publicaciones aparecerán aquí pronto.</div>';
+    }
+  }
+
+  function abrirModal(i) {
+    const post = postsData[i];
+    document.getElementById('modal-tag').textContent = post.tag;
+    document.getElementById('modal-title').textContent = post.title;
+    const imgEl = document.getElementById('modal-img');
+    imgEl.style.backgroundImage = post.image ? `url('${post.image}')` : '';
+
+    // Convertir markdown a HTML
+    let html = post.body
+      // Links tipo <https://...>
+      .replace(/<(https?:\/\/[^>]+)>/g, '<a href="$1" target="_blank" style="color:var(--violet-mid);word-break:break-all;">$1</a>')
+      // Links tipo [texto](url)
+      .replace(/\[(.+?)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color:var(--violet-mid);">$1</a>')
+      // Títulos
+      .replace(/^## (.+)$/gm, '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.5rem;font-weight:300;color:#2D1B4E;margin:1.5rem 0 0.75rem;">$1</h3>')
+      .replace(/^# (.+)$/gm, '<h2 style="font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:300;color:#2D1B4E;margin:1.5rem 0 0.75rem;">$1</h2>')
+      // Negrita y cursiva
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Párrafos
+      .split('\n\n').map(p => p.trim() ? `<p>${p.replace(/\n/g, '<br>')}</p>` : '').join('');
+
+    // Si el cuerpo está vacío mostrar el excerpt completo
+    if (!html.trim()) {
+      html = `<p>${post.excerpt}</p>`;
+    }
+
+    const excerptHtml = post.excerpt ? `<p style="font-size:1.05rem;font-style:italic;color:var(--violet-soft);border-left:2px solid var(--violet-pale);padding-left:1rem;margin-bottom:1.5rem;">${post.excerpt}</p>` : '';
+document.getElementById('modal-content').innerHTML = excerptHtml + html;
+    document.getElementById('modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarModal() {
+    document.getElementById('modal-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', cerrarModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) cerrarModal();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarModal(); });
+
+  cargarBlog();
+</script>
+
+<script>
+  // Menú hamburguesa móvil
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('nav-mobile');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  function cerrarMenuMovil() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+</script>
+
+</body>
+</html>
